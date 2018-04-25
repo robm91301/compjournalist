@@ -32,7 +32,6 @@ df$Time <- round(df$Time/100)*100
 df$Arrest.Type.Code <- recode(df$Arrest.Type.Code , "I" =  "Infraction" , "D" = "Dependent" , "F" = "Felony" , "M" = "Misdemeanor" , "O" = "Other")
 # change codes into human reable races
 df$Descent.Code <- recode(df$Descent.Code, "A" = "Other Asian" , "B" = "Black", "C" = "Chinese", "D" = "Cambodian",  "F" = "Filipino", "G" =  "Guamanian", "H" = "Hispanic/Latin/Mexican", "I" = "American Indian/Alaskan Native",  "J" = "Japanese", "K" = "Korean", "L" = "Laotian", "O" = "Other", "P" = "Pacific Islander", "S" = "Samoan",  "U" = "Hawaiian", "V" = "Vietnamese", "W" = "White", "X" = "Unknown", "Z" = "Asian Indian")
-write.csv(df,"reworked_arrest_data.csv",row.names=FALSE)
 # do crosstab on gender
 CrossTable(x=df$Sex.Code, y=df$Days, dnn=c("Gender","Days"),prop.r=FALSE,prop.c=FALSE,prop.t=FALSE,prop.chisq=FALSE, max.width=120)
 y = xtabs(~ Arrest.Type.Code + Days + Sex.Code , df)
